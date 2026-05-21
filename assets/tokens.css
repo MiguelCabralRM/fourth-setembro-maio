@@ -1,0 +1,334 @@
+/* ============================================================
+   RM DIGITAL — Design Tokens
+   Use estes tokens em todos os relatórios.
+   ============================================================ */
+
+/* Fontes locais (peso ExtraBold e Light fornecidos pela marca) */
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("./fonts/Geist-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Pesos intermediários (Regular/Medium/SemiBold) via Google Fonts
+   — usados em UI: botões, labels, badges. Mantém a coesão da Geist. */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap");
+
+:root {
+  /* ----- CORES PRIMÁRIAS ----- */
+  --rm-ink:        #000a13;  /* "preto" — substitui o preto puro */
+  --rm-paper:      #e6e9ec;  /* "branco" — substitui o branco puro (fundo geral) */
+  --rm-navy:       #00203f;  /* azul-marinho da logo / fundos escuros */
+  --rm-blue:       #037ff0;  /* azul de destaque / CTA / links */
+
+  /* ----- ESCALA DE CINZAS (fundos de cards e superfícies) ----- */
+  --rm-gray-50:    #f5f5f5;  /* superfície mais clara */
+  --rm-gray-100:   #e6e9ec;  /* paper */
+  --rm-gray-200:   #dddfe2;  /* divisor / card alt */
+  --rm-gray-300:   #ccd2d9;  /* borda / card destaque */
+  --rm-gray-400:   #9aa3ad;  /* texto desabilitado */
+  --rm-gray-500:   #6b7280;  /* texto secundário */
+  --rm-gray-600:   #474747;  /* texto de corpo (oficial) */
+  --rm-gray-900:   #000a13;  /* ink */
+
+  /* ----- DERIVADOS DO AZUL ----- */
+  --rm-blue-50:    #e6f2fe;
+  --rm-blue-100:   #cce5fd;
+  --rm-blue-200:   #80c0fa;
+  --rm-blue-500:   #037ff0;
+  --rm-blue-600:   #0269c8;
+  --rm-blue-700:   #014e95;
+
+  /* ----- SEMÂNTICAS (para gráficos e status em relatórios) ----- */
+  --rm-success:    #16a34a;
+  --rm-warning:    #f59e0b;
+  --rm-danger:     #dc2626;
+  --rm-info:       #037ff0;
+
+  /* ----- GRADIENTE DA MARCA ----- */
+  --rm-gradient: linear-gradient(135deg, #e8dcd0 0%, #4b8ac2 100%);
+  --rm-gradient-soft: linear-gradient(135deg, #f3ece3 0%, #b9d0e6 100%);
+
+  /* ----- TIPOGRAFIA ----- */
+  --rm-font: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Escala tipográfica para tela / relatórios web (px) */
+  --rm-text-xs:   12px;
+  --rm-text-sm:   14px;
+  --rm-text-base: 16px;
+  --rm-text-md:   18px;
+  --rm-text-lg:   22px;
+  --rm-text-xl:   28px;
+  --rm-text-2xl:  36px;
+  --rm-text-3xl:  48px;
+  --rm-text-4xl:  64px;
+  --rm-text-5xl:  88px;
+
+  /* Pesos */
+  --rm-w-light:    300;
+  --rm-w-regular:  400;
+  --rm-w-medium:   500;
+  --rm-w-semibold: 600;
+  --rm-w-bold:     700;
+  --rm-w-black:    800;
+
+  /* Line-height */
+  --rm-lh-tight:   1.05;
+  --rm-lh-snug:    1.2;
+  --rm-lh-normal:  1.45;
+  --rm-lh-relaxed: 1.6;
+
+  /* ----- ESPAÇAMENTO (escala 4px) ----- */
+  --rm-s-1:  4px;
+  --rm-s-2:  8px;
+  --rm-s-3:  12px;
+  --rm-s-4:  16px;
+  --rm-s-5:  20px;
+  --rm-s-6:  24px;
+  --rm-s-8:  32px;
+  --rm-s-10: 40px;
+  --rm-s-12: 48px;
+  --rm-s-16: 64px;
+  --rm-s-20: 80px;
+  --rm-s-24: 96px;
+
+  /* ----- RAIOS ----- */
+  --rm-radius-sm:   8px;
+  --rm-radius-md:   14px;
+  --rm-radius-lg:   20px;   /* cards padrão */
+  --rm-radius-xl:   28px;   /* cards grandes / hero */
+  --rm-radius-pill: 999px;  /* botões e badges */
+
+  /* ----- SOMBRAS ----- */
+  --rm-shadow-xs: 0 1px 2px rgba(0, 10, 19, 0.04);
+  --rm-shadow-sm: 0 2px 8px rgba(0, 10, 19, 0.05);
+  --rm-shadow-md: 0 8px 24px rgba(0, 10, 19, 0.06);
+  --rm-shadow-lg: 0 16px 40px rgba(0, 10, 19, 0.08);
+
+  /* ----- BORDA ----- */
+  --rm-border:        1px solid var(--rm-gray-300);
+  --rm-border-strong: 1.5px solid var(--rm-blue);
+}
+
+/* Reset base — aplique em qualquer página de relatório */
+.rm-reset {
+  font-family: var(--rm-font);
+  color: var(--rm-gray-600);
+  background: var(--rm-paper);
+  line-height: var(--rm-lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   COMPONENTES BASE (use direto nos relatórios)
+   ============================================================ */
+
+/* ---- Heading com sublinhado azul (assinatura da marca) ---- */
+.rm-heading {
+  font-family: var(--rm-font);
+  font-weight: var(--rm-w-black);
+  color: var(--rm-ink);
+  letter-spacing: -0.02em;
+  line-height: var(--rm-lh-tight);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.rm-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 56px;
+  background: var(--rm-blue);
+}
+.rm-heading--lg { font-size: var(--rm-text-3xl); }
+.rm-heading--md { font-size: var(--rm-text-2xl); }
+.rm-heading--sm { font-size: var(--rm-text-xl); }
+
+/* ---- Botão pílula primário ---- */
+.rm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: var(--rm-radius-pill);
+  font-family: var(--rm-font);
+  font-weight: var(--rm-w-medium);
+  font-size: var(--rm-text-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.rm-btn:hover { transform: translateY(-1px); }
+
+.rm-btn--primary {
+  background: var(--rm-blue);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(3, 127, 240, 0.28);
+}
+.rm-btn--primary:hover {
+  background: var(--rm-blue-600);
+  box-shadow: 0 8px 24px rgba(3, 127, 240, 0.36);
+}
+
+.rm-btn--secondary {
+  background: transparent;
+  color: var(--rm-blue);
+  border-color: var(--rm-blue);
+}
+.rm-btn--secondary:hover {
+  background: var(--rm-blue-50);
+}
+
+.rm-btn--ghost {
+  background: transparent;
+  color: var(--rm-ink);
+  border-color: var(--rm-gray-300);
+}
+.rm-btn--ghost:hover {
+  border-color: var(--rm-ink);
+}
+
+/* Ícone em círculo dentro do botão (estilo do site RM) */
+.rm-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 12px;
+}
+.rm-btn--secondary .rm-btn__icon,
+.rm-btn--ghost .rm-btn__icon {
+  background: transparent;
+  border: 1.5px solid currentColor;
+}
+
+/* ---- Card padrão ---- */
+.rm-card {
+  background: #fff;
+  border-radius: var(--rm-radius-lg);
+  padding: var(--rm-s-8);
+  box-shadow: var(--rm-shadow-sm);
+}
+.rm-card--soft   { background: var(--rm-gray-50); box-shadow: none; }
+.rm-card--paper  { background: var(--rm-gray-100); box-shadow: none; }
+.rm-card--bordered {
+  background: #fff;
+  border: 1.5px solid var(--rm-blue);
+  box-shadow: none;
+}
+.rm-card--dark {
+  background: var(--rm-navy);
+  color: var(--rm-paper);
+}
+.rm-card--dark .rm-heading { color: #fff; }
+.rm-card--dark .rm-heading::after { background: var(--rm-blue); }
+
+/* ---- Badge / pílula ---- */
+.rm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--rm-radius-pill);
+  font-family: var(--rm-font);
+  font-size: var(--rm-text-xs);
+  font-weight: var(--rm-w-medium);
+  letter-spacing: 0.01em;
+}
+.rm-badge--outline {
+  background: #fff;
+  color: var(--rm-blue);
+  border: 1.5px solid var(--rm-blue);
+}
+.rm-badge--soft {
+  background: var(--rm-blue-50);
+  color: var(--rm-blue-700);
+}
+.rm-badge--ghost {
+  background: var(--rm-gray-100);
+  color: var(--rm-gray-600);
+  border: 1px solid var(--rm-gray-300);
+}
+.rm-badge--success { background: #dcfce7; color: #166534; }
+.rm-badge--danger  { background: #fee2e2; color: #991b1b; }
+
+/* ---- KPI / número grande ---- */
+.rm-kpi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.rm-kpi__value {
+  font-family: var(--rm-font);
+  font-weight: var(--rm-w-black);
+  font-size: var(--rm-text-3xl);
+  color: var(--rm-ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.rm-kpi__label {
+  font-family: var(--rm-font);
+  font-weight: var(--rm-w-light);
+  font-size: var(--rm-text-sm);
+  color: var(--rm-gray-600);
+}
+
+/* ---- Input ---- */
+.rm-input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--rm-radius-pill);
+  border: 1px solid var(--rm-gray-300);
+  background: #fff;
+  font-family: var(--rm-font);
+  font-size: var(--rm-text-sm);
+  color: var(--rm-ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.rm-input:focus {
+  outline: none;
+  border-color: var(--rm-blue);
+  box-shadow: 0 0 0 4px rgba(3, 127, 240, 0.12);
+}
+.rm-input--textarea {
+  border-radius: 18px;
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* ---- Divisor de seção ---- */
+.rm-divider {
+  border: 0;
+  height: 1px;
+  background: var(--rm-gray-300);
+  margin: var(--rm-s-8) 0;
+}
+
+/* ---- Helpers ---- */
+.rm-blue   { color: var(--rm-blue); }
+.rm-ink    { color: var(--rm-ink); }
+.rm-muted  { color: var(--rm-gray-600); }
+.rm-bold   { font-weight: var(--rm-w-bold); color: var(--rm-ink); }
+
+.rm-mark-blue  { color: var(--rm-blue); font-weight: var(--rm-w-black); }
+.rm-mark-ink   { color: var(--rm-ink); font-weight: var(--rm-w-bold); }
